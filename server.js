@@ -25,6 +25,8 @@ app.use(helmet.contentSecurityPolicy({
     imgSrc: ["'self'", 'data:']
   }
 }));
+app.use(helmet.noCache()); //No Cache
+app.use(helmet.hidePoweredBy({ setTo: 'PHP 7.4.3' }));
 
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/assets', express.static(process.cwd() + '/assets'));
