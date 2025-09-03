@@ -4,12 +4,27 @@ const bodyParser = require('body-parser');
 const expect = require('chai');
 const socket = require('socket.io');
 const cors = require('cors');
+
+// Require helmet
 const helmet = require('helmet');
 
 const fccTestingRoutes = require('./routes/fcctesting.js');
 const runner = require('./test-runner.js');
 
 const app = express();
+
+app.use(helmet.noSniff()); //Prevent MIME type sniffing
+app.use(helmet.xssFilter()); //Basic XSS protecton header
+app.use(helmet.frameguard({ action: 'sameorigin' }));
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'", "'unsafe-inline'"],
+    connectSrc: ["'self'", 'ws:', 'wss:'],
+    styleSrc: ["'self'", "'unsafe-inline'"],
+    imgSrc: ["'self'", 'data:']
+  }
+}));
 
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/assets', express.static(process.cwd() + '/assets'));
