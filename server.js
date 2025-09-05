@@ -71,4 +71,13 @@ const server = app.listen(portNum, () => {
   }
 });
 
+// Attach socket.io to the server
+const io = socket(server);
+io.on('connection', (socket) => {
+  console.log('A user connected');
+  socket.on('disconnect', () => {
+    console.log('A user disconnected');
+  });
+});
+
 module.exports = app; // For testing
