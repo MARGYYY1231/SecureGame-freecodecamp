@@ -9,6 +9,8 @@ code {
 canvas {
   margin: auto;
   background-color: black;
+  border: 3px solid;
+  border-color: blueviolet;
 }
 
 .container {
