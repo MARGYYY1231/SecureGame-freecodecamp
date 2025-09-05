@@ -10,5 +10,6 @@ console.log(document.getElementById("game-window"));
 
 context.font = '20px sans-serif';
 context.fillStyle = "white";
-context.fillText("Controls: WASD", 10, 100);
-context.fillText("Coin Race", canvas.width/3 * 2, 100);
+context.fillText("Controls: WASD", 10, 50);
+context.fillText("Coin Race", canvas.width/3, 50);
+context.fillText("Rank: 1/1", canvas.width/3 * 2, 50);
