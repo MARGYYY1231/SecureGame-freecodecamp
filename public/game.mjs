@@ -8,6 +8,7 @@ const context = canvas.getContext('2d');
 console.log("Game script loaded");
 console.log(document.getElementById("game-window"));
 
-context.font = '40px sans-serif';
+context.font = '20px sans-serif';
 context.fillStyle = "white";
-context.fillText("Hello Player!", canvas.width/2, canvas.height/2);
+context.fillText("Controls: WASD", 10, 10);
+context.fillText("Coin Race", canvas/3 * 2, 10);
