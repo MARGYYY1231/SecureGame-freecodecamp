@@ -21,8 +21,12 @@ let randX = Math.round(Math.random() * gameWidth);
 let randY = Math.round(Math.random() * gameHeight);
 const pancake = new Collectible({ x: randX, y: randY, value: 5, id: 3 });
 pancake.draw(context);
+randX = Math.round(Math.random() * gameWidth);
+randY = Math.round(Math.random() * gameHeight);
 const cake = new Collectible({ x: randX, y: randY, value: 2, id: 2 });
 cake.draw(context);
+randX = Math.round(Math.random() * gameWidth);
+randY = Math.round(Math.random() * gameHeight);
 const donut = new Collectible({ x: randX, y: randY, value: 1, id: 1 });
 donut.draw(context);
 
