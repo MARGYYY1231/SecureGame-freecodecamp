@@ -6,7 +6,7 @@ const canvas = document.getElementById('game-window');
 const context = canvas.getContext('2d');
 
 const gameWidth = canvas.width;
-const gameHeight = canvas.width;
+const gameHeight = canvas.height;
 
 console.log("Game script loaded");
 console.log(document.getElementById("game-window"));
@@ -16,3 +16,8 @@ context.fillStyle = "white";
 context.fillText("Controls: WASD", gameWidth/8, 30);
 context.fillText("Coin Race", gameWidth/4, 30);
 context.fillText("Rank: 1/1", gameWidth/4 * 3, 30);
+
+let randX = Math.round(Math.random() * gameWidth);
+let randY = Math.round(Math.random() * gameHeight);
+const pancake = new Collectible(randX, randY, 3, 3);
+pancake.draw(context);

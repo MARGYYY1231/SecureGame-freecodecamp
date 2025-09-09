@@ -8,7 +8,7 @@ class Collectible {
 
   draw(context){
     const img = new Image();
-    img.src = "";
+    img.src = "boilerplate-project-secure-real-time-multiplayer-game\assets\food\Pancakes_Rainbow.png";
     img.onload = function(){
       context.drawImage(img, this.x, this.y)
     };
