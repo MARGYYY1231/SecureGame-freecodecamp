@@ -6,9 +6,24 @@ class Collectible {
     this.id = id;
   }
 
+  getImage(){
+    let val = "/assets/food/";
+    switch(id){
+      case 1:
+        val+="FunfettiDonut.png";
+        break;
+      case 2:
+        val+="RainbowCake.png";
+        break;
+      default:
+        val+="Pancakes_Rainbow.png";
+    }
+    return val;
+  }
+
   draw(context){
     const img = new Image();
-    img.src = "/assets/food/Pancakes_Rainbow.png"; 
+    img.src = this.getImage(); 
     console.log("x1:", this.x);
     console.log("y1:", this.y);
     img.onload = () => {
