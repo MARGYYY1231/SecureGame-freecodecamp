@@ -8,7 +8,7 @@ class Collectible {
 
   getImage(){
     let val = "/assets/food/";
-    switch(id){
+    switch(this.id){
       case 1:
         val+="FunfettiDonut.png";
         break;
