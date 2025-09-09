@@ -9,9 +9,10 @@ class Collectible {
   draw(context){
     const img = new Image();
     img.src = "/assets/food/Pancakes_Rainbow.png"; 
+    console.log("x1:", this.x);
+    console.log("y1:", this.y);
     img.onload = () => {
-      console.log("x:", this.x);
-      console.log("y:", this.y);
+      console.log("Pancake image loaded:", img.width, img.height);
       context.drawImage(img, this.x, this.y);
     };
   }
