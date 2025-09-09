@@ -1,8 +1,18 @@
 class Collectible {
   constructor({x, y, value, id}) {
-
+    this.x = x;
+    this.y = y;
+    this.value = value;
+    this.id = id;
   }
 
+  draw(context){
+    const img = new Image();
+    img.src = "";
+    img.onload = function(){
+      context.drawImage(img, this.x, this.y)
+    };
+  }
 }
 
 /*
