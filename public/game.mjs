@@ -19,5 +19,5 @@ context.fillText("Rank: 1/1", gameWidth/4 * 3, 30);
 
 let randX = Math.round(Math.random() * gameWidth);
 let randY = Math.round(Math.random() * gameHeight);
-const pancake = new Collectible(randX, randY, 3, 3);
+const pancake = new Collectible({ x: randX, y: randY, value: 3, id: 1 });
 pancake.draw(context);
