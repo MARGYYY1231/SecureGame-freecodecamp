@@ -13,7 +13,7 @@ class Collectible {
     console.log("y1:", this.y);
     img.onload = () => {
       console.log("Pancake image loaded:", img.width, img.height);
-      context.drawImage(img, 100, 100);
+      context.drawImage(img, this.x, this.y);
     };
   }
 }
