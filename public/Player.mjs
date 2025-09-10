@@ -4,10 +4,17 @@ class Player {
     this.y = y;
     this.score = score;
     this.id = id;
+    this.width = 32;
+    this.height = 32;
+    this.frameX = 0;
+    this.frameY = 0;
+    this.animation = 0.1;
+    this.currentAnimation = "IDLE";
   }
 
   movePlayer(dir, speed) {
-    switch(dir.toUpperCase()){
+    this.currentAnimation = dir.toUpperCase;
+    switch(this.currentAnimation){
       case "LEFT":
         this.x -= speed;
         break;
@@ -21,8 +28,7 @@ class Player {
         this.y += speed;
         break;
       default:
-        this.x = this.x;
-        this. y = this.y;
+        this.currentAnimation = "IDLE";
     }
   }
 
