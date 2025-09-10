@@ -7,7 +7,23 @@ class Player {
   }
 
   movePlayer(dir, speed) {
-
+    switch(dir.toUpperCase()){
+      case "LEFT":
+        this.x -= speed;
+        break;
+      case "RIGHT":
+        this.x += speed;
+        break;
+      case "UP":
+        this.y -= speed;
+        break;
+      case "DOWN":
+        this.y += speed;
+        break;
+      default:
+        this.x = this.x;
+        this. y = this.y;
+    }
   }
 
   collision(item) {
