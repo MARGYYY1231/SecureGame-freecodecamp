@@ -30,3 +30,7 @@ randY = Math.round(Math.random() * gameHeight);
 const donut = new Collectible({ x: randX, y: randY, value: 1, id: 1 });
 donut.draw(context);
 
+const keys = {};
+window.addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
+window.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
+
