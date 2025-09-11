@@ -25,6 +25,10 @@ class Player {
 
     this.sheet = new Image();
     sheet.src = "/assets/characters/Slime1_Idle_full.png";
+    this.sheetLoaded = false;
+    this.sheet.onload = () => {
+      this.sheetLoaded = true;
+    }
   }
 
   setSheets(moveSheet, idleSheet){
