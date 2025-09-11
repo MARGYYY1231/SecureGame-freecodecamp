@@ -27,18 +27,22 @@ class Player {
   update(keys){
     this.moving = false;
     if(keys["w"]){
+      console.log("w");
       this.movePlayer("U", this.speed);
       this.isMoving = true;
     }
     if(keys["s"]){
+      console.log("s");
       this.movePlayer("D", this.speed);
       this.isMoving = true;
     }
     if(keys["a"]){
+      console.log("a");
       this.movePlayer("L", this.speed);
       this.isMoving = true;
     }
     if(keys["d"]){
+      console.log("d");
       this.movePlayer("R", this.speed);
       this.isMoving = true;
     }
