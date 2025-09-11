@@ -22,6 +22,9 @@ class Player {
 
     this.idleFrames = 6;
     this.moveFrames = 8;
+
+    this.sheet = new Image();
+    sheet.src = "/assets/characters/Slime1_Idle_full.png";
   }
 
   setSheets(moveSheet, idleSheet){
@@ -85,11 +88,9 @@ class Player {
 
   draw(context){
     //let sheet = this.isMoving ? this.movesheet : this.idlesheet;
-    const sheet = new Image();
-    sheet.src = "/assets/characters/Slime1_Idle_full.png";
     console.log("x: ", this.x);
     console.log("y: ", this.y);
-    context.drawImage(sheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+    context.drawImage(this.sheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
   }
 
   collision(item) {
