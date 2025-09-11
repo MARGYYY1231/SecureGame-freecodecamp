@@ -24,7 +24,7 @@ class Player {
     this.moveFrames = 8;
 
     this.sheet = new Image();
-    sheet.src = "/assets/characters/Slime1_Idle_full.png";
+    this.sheet.src = "/assets/characters/Slime1_Idle_full.png";
     this.sheetLoaded = false;
     this.sheet.onload = () => {
       this.sheetLoaded = true;
