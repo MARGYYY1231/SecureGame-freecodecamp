@@ -21,7 +21,7 @@ function gameloop(){
 }
 
 function frame(){
-    context.clearRect(0, 0 , width, height);
+    context.clearRect(0, 0 , gameWidth, gameHeight);
     gameloop();
     requestAnimationFrame(gameloop);
 }
