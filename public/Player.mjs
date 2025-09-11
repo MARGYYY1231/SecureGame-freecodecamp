@@ -97,6 +97,8 @@ class Player {
     idleSheet.onload = () => {
       console.log("slime image loaded:", idleSheet.width, idleSheet.height);
       context.drawImage(idleSheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+      context.drawImage(idleSheet, 1 * this.width, this.frameY * this.height, this.width, this.height, 300, 300, this.width, this.height);
+      context.drawImage(idleSheet, this.frameX * this.width, 1 * this.height, this.width, this.height, 400, 400, this.width, this.height);
     };
   }
 
