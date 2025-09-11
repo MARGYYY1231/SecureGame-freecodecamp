@@ -78,7 +78,7 @@ class Player {
 
   draw(context){
     const sheet = this.moving ? this.moveSheet : this.idleSheet;
-    context.drawImage(sheet, this.frameX * this.width, this.frameY * this.height, this.x, this.y, 32, 32);
+    context.drawImage(sheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
   }
 
   collision(item) {
