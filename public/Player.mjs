@@ -86,7 +86,7 @@ class Player {
   draw(context){
     //let sheet = this.isMoving ? this.movesheet : this.idlesheet;
     const sheet = new Image();
-    sheet.src = "assets/characters/Slime1_Idle_full.png";
+    sheet.src = "/assets/characters/Slime1_Idle_full.png";
     console.log("x: ", this.x);
     console.log("y: ", this.y);
     context.drawImage(sheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
