@@ -91,6 +91,7 @@ class Player {
     let src = "/assets/characters/";
     let sheet = (this.id == 1)  ? "Slime1_Idle_full.png" : "Slime2_Idle_full.png";
     src+=sheet;
+    idleSheet.src = src;
     console.log("x1:", this.x);
     console.log("y1:", this.y);
     idleSheet.onload = () => {
