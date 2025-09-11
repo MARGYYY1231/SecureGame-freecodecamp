@@ -93,7 +93,7 @@ class Player {
     console.log("x1:", this.x);
     console.log("y1:", this.y);
     idleSheet.onload = () => {
-      console.log("Pancake image loaded:", img.width, img.height);
+      console.log("slime image loaded:", idleSheet.width, idleSheet.height);
       context.drawImage(sheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
     };
   }
