@@ -90,11 +90,12 @@ class Player {
     const idleSheet = new Image();
     let src = "/assets/characters/";
     let sheet = (this.id == 1)  ? "Slime1_Idle_full.png" : "Slime2_Idle_full.png";
+    src+=sheet;
     console.log("x1:", this.x);
     console.log("y1:", this.y);
     idleSheet.onload = () => {
       console.log("slime image loaded:", idleSheet.width, idleSheet.height);
-      context.drawImage(sheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+      context.drawImage(idleSheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
     };
   }
 
