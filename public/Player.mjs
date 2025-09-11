@@ -10,8 +10,12 @@ class Player {
     this.frameY = 0;
     this.speed = 2;
     this.moving = false;
+
     this.idleSheet = this.setIdleSheet();
     this.moveSheet = this.setMoveSheet();
+
+    this.idleFrames = 6;
+    this.moveFrames = 8;
   }
 
   setIdleSheet(){
@@ -54,18 +58,27 @@ class Player {
   movePlayer(dir, speed) {
     switch(dir.toUpperCase()){
       case "U":
+        this.y -= speed;
+        this.frameY = 1;
         break;
       case "D":
+        this.y += speed;
+        this.frameY = 0;
         break
       case "L":
+        this.x -= speed;
+        this.frameY = 2;
         break;
       case "R":
+        this.x += speed;
+        this.frameY = 3;
         break;
     }
   }
 
   draw(context){
-
+    const sheet = this.moving ? this.moveSheet : this.idleSheet;
+    context.drawImage(sheet, this.frameX * this.width, this.frameY * this.height, this.x, this.y, 32, 32);
   }
 
   collision(item) {
