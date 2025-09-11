@@ -11,18 +11,46 @@ const gameHeight = canvas.height;
 console.log("Game script loaded");
 console.log(document.getElementById("game-window"));
 
-context.font = '20px sans-serif';
-context.fillStyle = "white";
-context.fillText("Controls: WASD", gameWidth/8, 30);
-context.fillText("Coin Race", gameWidth/4, 30);
-context.fillText("Rank: 1/1", gameWidth/4 * 3, 30);
-
 const keys = {};
 window.addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
 window.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
 
-const player = new Player({x:200, y:200, score:0, id:1});
-player.draw(context);
+let player;
+
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+  });
+}
+
+function gameloop(){
+    context.clearRect(0, 0, gameWidth, gameHeight);
+
+    context.font = '20px sans-serif';
+    context.fillStyle = "white";
+    context.fillText("Controls: WASD", gameWidth/8, 30);
+    context.fillText("Coin Race", gameWidth/4, 30);
+    context.fillText("Rank: 1/1", gameWidth/4 * 3, 30);
+
+    player.update(keys);
+    player.draw(context);
+
+  requestAnimationFrame(gameLoop);
+}
+
+Promise.all([
+  loadImage("assets/characters/Slime1_Idle_full.png"),
+  loadImage("assets/characters/Slime1_Walk_body.png")
+]).then(([idleImage, moveImage]) => {
+  player = new Player({ x: 200, y: 200, score: 0, id: 1,});
+  player.setSheets(moveImage, idleImage);
+  requestAnimationFrame(gameLoop);
+});
+
+gameloop();
 
 // let randX = Math.round(Math.random() * gameWidth);
 // let randY = Math.round(Math.random() * gameHeight);

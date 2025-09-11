@@ -4,53 +4,43 @@ class Player {
     this.y = y;
     this.score = score;
     this.id = id;
-    this.width = 64;
-    this.height = 64;
-    this.frameX = 0;
-    this.frameY = 0;
+    
+    this.frame = 0;
+    this.frameCounter = 0;
+    this.frameSpeed = 8;
+    this.isMoving = false;
+    this.direction = "D";
     this.speed = 2;
-    this.moving = false;
 
-    this.idleSheet = this.setIdleSheet();
-    this.moveSheet = this.setMoveSheet();
+    this.movesheet = null;
+    this.idlesheet = null;
 
     this.idleFrames = 6;
     this.moveFrames = 8;
   }
 
-  setIdleSheet(){
-    const idleSheet = new Image();
-    let src = "/assets/characters/";
-    let sheet = (this.id == 1)  ? "Slime1_Idle_full.png" : "Slime2_Idle_full.png";
-    idleSheet.src = (src+sheet);
-    return idleSheet;
-  }
-
-  setMoveSheet(){
-    const moveSheet = new Image();
-    let src = "/assets/characters/";
-    let sheet = (this.id == 1)  ? "Slime1_Walk_body.png" : "Slime2_Walk_body.png";
-    moveSheet.src = (src+sheet);
-    return moveSheet;
+  setSheets(moveSheet, idleSheet){
+    this.movesheet = moveSheet;
+    this.idlesheet = idleSheet;
   }
 
   update(keys){
     this.moving = false;
     if(keys["w"]){
       this.movePlayer("U", this.speed);
-      this.moving = true;
+      this.isMoving = true;
     }
     if(keys["s"]){
       this.movePlayer("D", this.speed);
-      this.moving = true;
+      this.isMoving = true;
     }
     if(keys["a"]){
       this.movePlayer("L", this.speed);
-      this.moving = true;
+      this.isMoving = true;
     }
     if(keys["d"]){
       this.movePlayer("R", this.speed);
-      this.moving = true;
+      this.isMoving = true;
     }
   }
 
@@ -85,21 +75,8 @@ class Player {
   }
 
   draw(context){
-    //const sheet = this.moving ? this.moveSheet : this.idleSheet;
-    //context.drawImage(sheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
-    const idleSheet = new Image();
-    let src = "/assets/characters/";
-    let sheet = (this.id == 1)  ? "Slime1_Idle_full.png" : "Slime2_Idle_full.png";
-    src+=sheet;
-    idleSheet.src = src;
-    console.log("x1:", this.x);
-    console.log("y1:", this.y);
-    idleSheet.onload = () => {
-      console.log("slime image loaded:", idleSheet.width, idleSheet.height);
-      context.drawImage(idleSheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
-      context.drawImage(idleSheet, 1 * this.width, this.frameY * this.height, this.width, this.height, 300, 300, this.width, this.height);
-      context.drawImage(idleSheet, this.frameX * this.width, 1 * this.height, this.width, this.height, 400, 400, this.width, this.height);
-    };
+    let sheet = this.moving ? this.moveSheet : this.idleSheet;
+    context.drawImage(idleSheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
   }
 
   collision(item) {
