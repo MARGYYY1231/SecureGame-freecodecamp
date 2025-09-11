@@ -38,7 +38,7 @@ function gameloop(){
     player.update(keys);
     //player.draw(context);
 
-  requestAnimationFrame(gameLoop);
+  requestAnimationFrame(gameloop);
 }
 
 Promise.all([
@@ -49,8 +49,6 @@ Promise.all([
   player.setSheets(moveImage, idleImage);
   requestAnimationFrame(gameloop);
 });
-
-gameloop();
 
 // let randX = Math.round(Math.random() * gameWidth);
 // let randY = Math.round(Math.random() * gameHeight);
