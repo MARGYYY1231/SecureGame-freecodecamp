@@ -17,6 +17,13 @@ context.fillText("Controls: WASD", gameWidth/8, 30);
 context.fillText("Coin Race", gameWidth/4, 30);
 context.fillText("Rank: 1/1", gameWidth/4 * 3, 30);
 
+const keys = {};
+window.addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
+window.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
+
+const player = new Player({x:200, y:200, score:0, id:1});
+player.draw(context);
+
 let randX = Math.round(Math.random() * gameWidth);
 let randY = Math.round(Math.random() * gameHeight);
 const pancake = new Collectible({ x: randX, y: randY, value: 5, id: 3 });
@@ -29,8 +36,4 @@ randX = Math.round(Math.random() * gameWidth);
 randY = Math.round(Math.random() * gameHeight);
 const donut = new Collectible({ x: randX, y: randY, value: 1, id: 1 });
 donut.draw(context);
-
-const keys = {};
-window.addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
-window.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
 
