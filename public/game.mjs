@@ -36,7 +36,7 @@ function gameloop(){
     context.fillText("Rank: 1/1", gameWidth/4 * 3, 30);
 
     player.update(keys);
-    //player.draw(context);
+    player.draw(context);
 
   requestAnimationFrame(gameloop);
 }
