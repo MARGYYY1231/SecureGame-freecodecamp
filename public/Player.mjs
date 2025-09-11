@@ -74,11 +74,28 @@ class Player {
         this.frameY = 3;
         break;
     }
+
+    // animate regardless of state
+    this.frameTimer++;
+    if (this.frameTimer >= this.frameInterval) {
+      const maxFrames = this.moving ? this.moveFrames : this.idleFrames;
+      this.currentFrame = (this.currentFrame + 1) % maxFrames;
+      this.frameTimer = 0;
+    }
   }
 
   draw(context){
-    const sheet = this.moving ? this.moveSheet : this.idleSheet;
-    context.drawImage(sheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+    //const sheet = this.moving ? this.moveSheet : this.idleSheet;
+    //context.drawImage(sheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+    const idleSheet = new Image();
+    let src = "/assets/characters/";
+    let sheet = (this.id == 1)  ? "Slime1_Idle_full.png" : "Slime2_Idle_full.png";
+    console.log("x1:", this.x);
+    console.log("y1:", this.y);
+    idleSheet.onload = () => {
+      console.log("Pancake image loaded:", img.width, img.height);
+      context.drawImage(sheet, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+    };
   }
 
   collision(item) {
