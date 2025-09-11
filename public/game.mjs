@@ -36,7 +36,7 @@ function gameloop(){
     context.fillText("Rank: 1/1", gameWidth/4 * 3, 30);
 
     player.update(keys);
-    player.draw(context);
+    //player.draw(context);
 
   requestAnimationFrame(gameLoop);
 }
@@ -47,7 +47,7 @@ Promise.all([
 ]).then(([idleImage, moveImage]) => {
   player = new Player({ x: 200, y: 200, score: 0, id: 1,});
   player.setSheets(moveImage, idleImage);
-  requestAnimationFrame(gameLoop);
+  requestAnimationFrame(gameloop);
 });
 
 gameloop();
