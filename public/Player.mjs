@@ -18,7 +18,7 @@ class Player {
 
   getSheet(){
     const sheet = new Image();
-    sheet.src = "assets/characters/" + (this.id === 1) ? "Slime1_Idle_full.png" : "Slime2_Idle_full.png";
+    sheet.src = (this.id === 1) ? "assets/characters/Slime1_Idle_full.png" : "assets/characters/Slime2_Idle_full.png";
     return sheet;
   }
 
