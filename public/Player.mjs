@@ -66,8 +66,6 @@ class Player {
   }
 
   draw(context){
-    console.log("x: ", this.x);
-    console.log("y: ", this.y);
     context.drawImage(
       this.sheet, 
       this.frameX * this.width, 
