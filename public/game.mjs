@@ -28,7 +28,7 @@ function animate(){
 }
 
 function frame(){
-    context.clearRect(0, 0, width, height);
+    context.clearRect(0, 0, gameWidth, gameHeight);
     animate();
     requestAnimationFrame(frame);
 }

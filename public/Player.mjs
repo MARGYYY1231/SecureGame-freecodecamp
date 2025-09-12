@@ -18,7 +18,7 @@ class Player {
 
   getSheet(){
     const sheet = new Image();
-    sheet.src = "/assets/charcters/Slime1_Idle_full.png";
+    sheet.src = "assets/characters/Slime1_Idle_full.png";
     return sheet;
   }
 
