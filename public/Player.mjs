@@ -17,12 +17,12 @@ class Player {
   }
 
   getSheet(){
-    if (typeof Image !== "undefined") {
-      const sheet = new Image();
-      sheet.src = (this.id === 1) ? "assets/characters/Slime1_Idle_full.png" : "assets/characters/Slime2_Idle_full.png";
-      return sheet;
-    }
-    return null;
+   // if (typeof Image !== "undefined") {
+    const sheet = new Image();
+    sheet.src = (this.id === 1) ? "assets/characters/Slime1_Idle_full.png" : "assets/characters/Slime2_Idle_full.png";
+    return sheet;
+    //}
+    //return null;
   }
 
   update(keys){
