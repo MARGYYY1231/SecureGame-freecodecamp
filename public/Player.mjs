@@ -28,38 +28,38 @@ class Player {
   update(keys){
     if(keys["w"]){
       console.log("w");
-      this.movePlayer("U", this.speed);
+      this.movePlayer("up", this.speed);
     }
     if(keys["s"]){
       console.log("s");
-      this.movePlayer("D", this.speed);
+      this.movePlayer("down", this.speed);
     }
     if(keys["a"]){
       console.log("a");
-      this.movePlayer("L", this.speed);
+      this.movePlayer("left", this.speed);
     }
     if(keys["d"]){
       console.log("d");
-      this.movePlayer("R", this.speed);
+      this.movePlayer("right", this.speed);
     }
   }
 
 
   movePlayer(dir, speed) {
-    switch(dir.toUpperCase()){
-      case "U":
+    switch(dir.toLowerCase()){
+      case "up":
         this.y -= speed;
         this.frameY = 1;
         break;
-      case "D":
+      case "down":
         this.y += speed;
         this.frameY = 0;
         break
-      case "L":
+      case "left":
         this.x -= speed;
         this.frameY = 2;
         break;
-      case "R":
+      case "right":
         this.x += speed;
         this.frameY = 3;
         break;
