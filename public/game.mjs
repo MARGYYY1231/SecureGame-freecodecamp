@@ -21,7 +21,7 @@ window.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
 //     context.fillText("Coin Race", gameWidth/4, 30);
 //     context.fillText("Rank: 1/1", gameWidth/4 * 3, 30);
 
-let player = new Player({x: 200, y:200, score: 0, id: 1});
+let player = new Player({x: 200, y:200, score: 0, id: 2});
 
 function animate(){
     player.update(keys);
