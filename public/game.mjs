@@ -11,9 +11,9 @@ const gameHeight = canvas.height;
 console.log("Game script loaded");
 console.log(document.getElementById("game-window"));
 
-// const keys = {};
-// window.addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
-// window.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
+const keys = {};
+window.addEventListener("keydown", e => keys[e.key.toLowerCase()] = true);
+window.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
 
 //     context.font = '20px sans-serif';
 //     context.fillStyle = "white";
@@ -24,6 +24,7 @@ console.log(document.getElementById("game-window"));
 let player = new Player({x: 200, y:200, score: 0, id: 1});
 
 function animate(){
+    player.update(keys);
     player.draw(context);
 }
 
