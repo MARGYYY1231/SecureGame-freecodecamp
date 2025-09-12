@@ -45,19 +45,19 @@ class Player {
   movePlayer(dir, speed) {
     switch(dir.toUpperCase()){
       case "U":
-        //this.y -= speed;
+        this.y -= speed;
         this.frameY = 1;
         break;
       case "D":
-        //this.y += speed;
+        this.y += speed;
         this.frameY = 0;
         break
       case "L":
-        //this.x -= speed;
+        this.x -= speed;
         this.frameY = 2;
         break;
       case "R":
-        //this.x += speed;
+        this.x += speed;
         this.frameY = 3;
         break;
     }    
