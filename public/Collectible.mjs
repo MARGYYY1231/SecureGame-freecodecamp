@@ -4,8 +4,14 @@ class Collectible {
     this.y = y;
     this.value = value;
     this.id = id;
-    this.img = new Image();
-    this.img.src = this.getImage();
+    
+    if (typeof window !== "undefined" && typeof window.Image !== "undefined") {
+      this.img = new window.Image();
+      this.img.src = this.getImage();
+    } else {
+      // dummy object for Node.js tests
+      this.img = { src: this.getImage() };
+    }
   }
 
   getImage(){
