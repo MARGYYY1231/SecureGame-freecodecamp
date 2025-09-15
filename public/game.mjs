@@ -43,13 +43,26 @@ function makeCollectible(){
 
 let player = new Player({x: 200, y:200, score: 0, id: 2});
 
-console.log("x: ", getRandNum(0, gameWidth));
-console.log("y: ", getRandNum(0, gameHeight));
-let egId = getRandNum(1, 3);
-console.log("id: ", egId);
-console.log("value: ", collectibles.get(egId));
+// console.log("x: ", getRandNum(0, gameWidth));
+// console.log("y: ", getRandNum(0, gameHeight));
+// let egId = getRandNum(1, 3);
+// console.log("id: ", egId);
+// console.log("value: ", collectibles.get(egId));
 
-//let food = [makeCollectible(), makeCollectible(), makeCollectible()];
+let food = [makeCollectible(), makeCollectible(), makeCollectible()];
+
+function loopFood(){
+    for(let i = 0; i<food.length; i++){
+        let c = food[i];
+        console.log("item ", i);
+        console.log("x: ", c.x);
+        console.log("y: ", c.y);
+        console.log("id: ", c.id);
+        console.log("value: ", c.value);
+    }
+}
+
+loopFood();
 
 function animate(){
     player.update(keys);
