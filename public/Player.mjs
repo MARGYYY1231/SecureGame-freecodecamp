@@ -84,8 +84,8 @@ class Player {
     context.strokeRect(
       this.x, 
       this.y, 
-      this.width * this.scale, 
-      this.height * this.scale
+      this.width * 0.5, 
+      this.height * 0.5
     );
 
     this.count++;
@@ -101,9 +101,9 @@ class Player {
 
   collision(item) {
     const playerLeft   = this.x;
-    const playerRight  = this.x + this.width * this.scale;
+    const playerRight  = this.x + this.width * 0.5;
     const playerTop    = this.y;
-    const playerBottom = this.y + this.height * this.scale;
+    const playerBottom = this.y + this.height * 0.5;
 
     // Collectible bounding box (your collectibles are 32x32)
     const itemLeft   = item.x;
