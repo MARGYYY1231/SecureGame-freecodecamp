@@ -38,7 +38,7 @@ function getRandNum(min, max){
 
 function makeCollectible(){
     let id = getRandNum(1, 3);
-    return new Collectible({x: getRandNum(0, gameWidth), y: getRandNum(0, gameHeight), value: collectibles.get(id), id: id});
+    return new Collectible({x: getRandNum(50, gameWidth * 0.75), y: getRandNum(50, gameHeight * 0.75), value: collectibles.get(id), id: id});
 }
 
 let player = new Player({x: 200, y:200, score: 0, id: 2});
@@ -46,8 +46,7 @@ let player = new Player({x: 200, y:200, score: 0, id: 2});
 let food = [makeCollectible(), makeCollectible(), makeCollectible()];
 
 function loopFood(){
-    //food.length
-    for(let i = 0; i<1; i++){
+    for(let i = 0; i<food.length; i++){
         let c = food[i];
         // console.log("item ", i);
         // console.log("x: ", c.x);
