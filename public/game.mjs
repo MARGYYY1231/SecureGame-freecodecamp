@@ -38,7 +38,7 @@ function getRandNum(min, max){
 
 function makeCollectible(){
     let id = getRandNum(1, 3);
-    return new Collectible({x: getRandNum(0, gameWidth), y: getRandNum(0, gameHeight), value: map.get(id), id: id});
+    return new Collectible({x: getRandNum(0, gameWidth), y: getRandNum(0, gameHeight), value: collectibles.get(id), id: id});
 }
 
 let player = new Player({x: 200, y:200, score: 0, id: 2});
