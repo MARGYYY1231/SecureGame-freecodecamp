@@ -4,6 +4,8 @@ class Collectible {
     this.y = y;
     this.value = value;
     this.id = id;
+    this.img = new Image();
+    this.img.src = this.getImage();
   }
 
   getImage(){
@@ -22,14 +24,10 @@ class Collectible {
   }
 
   draw(context){
-    const img = new Image();
-    img.src = this.getImage(); 
     console.log("x1:", this.x);
     console.log("y1:", this.y);
-    img.onload = () => {
-      console.log("Pancake image loaded:", img.width, img.height);
-      context.drawImage(img, this.x, this.y);
-    };
+    console.log("Pancake image loaded:", img.width, img.height);
+    context.drawImage(this.img, this.x, this.y);
   }
 }
 
