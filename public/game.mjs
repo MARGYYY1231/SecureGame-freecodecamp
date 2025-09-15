@@ -48,19 +48,19 @@ let food = [makeCollectible(), makeCollectible(), makeCollectible()];
 function loopFood(){
     for(let i = 0; i<food.length; i++){
         let c = food[i];
-        console.log("item ", i);
-        console.log("x: ", c.x);
-        console.log("y: ", c.y);
-        console.log("id: ", c.id);
-        console.log("value: ", c.value);
+        // console.log("item ", i);
+        // console.log("x: ", c.x);
+        // console.log("y: ", c.y);
+        // console.log("id: ", c.id);
+        // console.log("value: ", c.value);
         c.draw(context);
     }
 }
 
-loopFood();
 function animate(){
     player.update(keys);
     player.draw(context);
+    loopFood();
 }
 
 function frame(){
