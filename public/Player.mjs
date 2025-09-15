@@ -110,7 +110,13 @@ class Player {
   }
 
   calculateRank(arr) {
+    // Sort scores descending
+    arr.sort((a, b) => b - a);
 
+    // Find this player's score in the sorted list
+    const rank = arr.indexOf(this.score) + 1;
+
+    return `Rank: ${rank} / ${arr.length}`;
   }
 }
 
