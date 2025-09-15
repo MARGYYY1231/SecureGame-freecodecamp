@@ -21,7 +21,35 @@ window.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
 //     context.fillText("Coin Race", gameWidth/4, 30);
 //     context.fillText("Rank: 1/1", gameWidth/4 * 3, 30);
 
+const collectibles = new Map();
+setMap();
+
+function setMap(){
+    collectibles.set(1, 1);
+    collectibles.set(2, 5);
+    collectibles.set(3, 10);
+}
+
+function getRandNum(min, max){
+    min = Math.ceil(min); // Ensure min is an integer
+    max = Math.floor(max); // Ensure max is an integer
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function makeCollectible(){
+    let id = getRandNum(1, 3);
+    return new Collectible({x: getRandNum(0, gameWidth), y: getRandNum(0, gameHeight), value: map.get(id), id: id});
+}
+
 let player = new Player({x: 200, y:200, score: 0, id: 2});
+
+console.log("x: ", getRandNum(0, gameWidth));
+console.log("y: ", getRandNum(0, gameHeight));
+let egId = getRandNum(1, 3);
+console.log("id: ", egId);
+console.log("value: ", collectibles.get(egId));
+
+//let food = [makeCollectible(), makeCollectible(), makeCollectible()];
 
 function animate(){
     player.update(keys);
