@@ -24,9 +24,6 @@ class Collectible {
   }
 
   draw(context){
-    console.log("x1:", this.x);
-    console.log("y1:", this.y);
-    console.log("Pancake image loaded:", this.img.width, this.img.height);
     context.drawImage(this.img, this.x, this.y);
   }
 }
