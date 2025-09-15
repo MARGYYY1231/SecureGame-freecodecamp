@@ -79,6 +79,15 @@ class Player {
       this.height * this.scale
     );
 
+    context.strokeStyle = "red";
+    context.lineWidth = 2;
+    context.strokeRect(
+      this.x, 
+      this.y, 
+      this.width * this.scale, 
+      this.height * this.scale
+    );
+
     this.count++;
     if(this.count > 5){
       this.frameX++;

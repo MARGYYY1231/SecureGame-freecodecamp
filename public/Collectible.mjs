@@ -24,9 +24,11 @@ class Collectible {
   }
 
   draw(context){
-    console.log("collectible x: ", this.x);
-    console.log("collectible y: ", this.y);
     context.drawImage(this.img, this.x, this.y, 32, 32);
+    // Draw a border (blue for visibility)
+    context.strokeStyle = "blue";
+    context.lineWidth = 2;
+    context.strokeRect(this.x, this.y, 32, 32);
   }
 }
 
