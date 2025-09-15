@@ -91,11 +91,24 @@ class Player {
   }
 
   collision(item) {
-    console.log("item x: ", item.x);
-    console.log("item y: ", item.y);
-    console.log("x: ", this.x);
-    console.log("y: ", this.y);
-    if(item.x === this.x && item.y === this.y){
+    const playerLeft   = this.x;
+    const playerRight  = this.x + this.width * this.scale;
+    const playerTop    = this.y;
+    const playerBottom = this.y + this.height * this.scale;
+
+    // Collectible bounding box (your collectibles are 32x32)
+    const itemLeft   = item.x;
+    const itemRight  = item.x + 32;
+    const itemTop    = item.y;
+    const itemBottom = item.y + 32;
+
+    // Check for overlap
+    const overlap = !(playerRight < itemLeft ||
+                      playerLeft > itemRight ||
+                      playerBottom < itemTop ||
+                      playerTop > itemBottom);
+
+    if(overlap){
       this.score+=item.value;
       console.log("score: " + this.score);
       return true;
