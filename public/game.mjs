@@ -55,7 +55,7 @@ function loopFood(){
         // console.log("id: ", c.id);
         // console.log("value: ", c.value);
         if (player.collision(c)) {
-            c = makecollectible(); 
+            c = makeCollectible(); 
             food[i] = c;
         }
         c.draw(context);
