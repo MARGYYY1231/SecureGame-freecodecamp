@@ -46,7 +46,8 @@ let player = new Player({x: 200, y:200, score: 0, id: 2});
 let food = [makeCollectible(), makeCollectible(), makeCollectible()];
 
 function loopFood(){
-    for(let i = 0; i<food.length; i++){
+    //food.length
+    for(let i = 0; i<1; i++){
         let c = food[i];
         // console.log("item ", i);
         // console.log("x: ", c.x);
