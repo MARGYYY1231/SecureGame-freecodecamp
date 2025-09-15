@@ -91,6 +91,10 @@ class Player {
   }
 
   collision(item) {
+    console.log("item x: ", item.x);
+    console.log("item y: ", item.y);
+    console.log("x: ", this.x);
+    console.log("y: ", this.y);
     if(item.x === this.x && item.y === this.y){
       this.score+=item.value;
       console.log("score: " + this.score);
