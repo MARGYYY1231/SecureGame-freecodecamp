@@ -84,8 +84,8 @@ class Player {
     context.strokeRect(
       this.x, 
       this.y, 
-      this.width * 0.5, 
-      this.height * 0.5
+      this.x + (this.width * this.scale) / 2, 
+      this.y + (this.height * this.scale) / 2
     );
 
     this.count++;
@@ -100,24 +100,17 @@ class Player {
   }
 
   collision(item) {
-    const playerLeft   = this.x;
-    const playerRight  = this.x + this.width * 0.5;
-    const playerTop    = this.y;
-    const playerBottom = this.y + this.height * 0.5;
+    const playerCenterX = this.x + (this.width * this.scale) / 2;
+    const playerCenterY = this.y + (this.height * this.scale) / 2;
 
-    // Collectible bounding box (your collectibles are 32x32)
-    const itemLeft   = item.x;
-    const itemRight  = item.x + 32;
-    const itemTop    = item.y;
-    const itemBottom = item.y + 32;
+    const itemCenterX = item.x + 16; // 32 / 2
+    const itemCenterY = item.y + 16; // 32 / 2
 
-    // Check for overlap
-    const overlap = !(playerRight < itemLeft ||
-                      playerLeft > itemRight ||
-                      playerBottom < itemTop ||
-                      playerTop > itemBottom);
+    const dx = playerCenterX - itemCenterX;
+    const dy = playerCenterY - itemCenterY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
 
-    if(overlap){
+    if(distance < 16){
       this.score+=item.value;
       console.log("score: " + this.score);
       return true;
