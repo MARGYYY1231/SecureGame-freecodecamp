@@ -24,7 +24,9 @@ class Collectible {
   }
 
   draw(context){
-    context.drawImage(this.img, this.x, this.y);
+    console.log("collectible x: ", this.x);
+    console.log("collectible y: ", this.y);
+    context.drawImage(this.img, this.x, this.y, 32, 32);
   }
 }
 
