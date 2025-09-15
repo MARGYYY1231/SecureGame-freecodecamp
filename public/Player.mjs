@@ -82,10 +82,10 @@ class Player {
     context.strokeStyle = "red";
     context.lineWidth = 2;
     context.strokeRect(
-      this.x, 
-      this.y, 
-      this.x + (this.width * this.scale) / 2, 
-      this.y + (this.height * this.scale) / 2
+      this.x + this.width / 4,
+      this.y + this.height / 4,
+      this.width / 2,
+      this.height / 2
     );
 
     this.count++;
