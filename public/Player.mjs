@@ -4,14 +4,14 @@ class Player {
     this.y = y;
     this.score = score;
     this.id = id;
-    this.speed = 2;
+    this.speed = 1;
     this.sheet = this.getSheet();
 
     this.frameX = 0;
     this.frameY = 0;
     this.width = 64;
     this.height = 64;
-    this.scale = 1;
+    this.scale = 2;
 
     this.count = 0;
   }
@@ -91,7 +91,11 @@ class Player {
   }
 
   collision(item) {
-
+    if(item.x === this.x && item.y === this.y){
+      score+=item.value;
+      return true;
+    }
+    return false;
   }
 
   calculateRank(arr) {
