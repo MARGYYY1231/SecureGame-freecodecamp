@@ -124,7 +124,7 @@ class Player {
     // Count how many scores are greater than this player's score
     const rank = allScores.filter(score => score > this.score).length + 1;
 
-    return `Rank: ${rank} / ${arr.length}`;
+    return `Rank: ${rank} / ${allScores.length}`;
   }
 }
 
