@@ -124,9 +124,8 @@ function animate() {
   loopFood();
 
   // Draw local player's rank
-  const allScores = Object.values(players).map(p => p.score);
   if (players[myId]) {
-    const rankText = players[myId].calculateRank(allScores);
+    const rankText = players[myId].calculateRank(players);
     context.font = '20px sans-serif';
     context.fillStyle = 'white';
     context.fillText(rankText, gameWidth * 0.75, 30);
