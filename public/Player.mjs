@@ -12,7 +12,7 @@ class Player {
     this.frameY = 0;
     this.width = 64;
     this.height = 64;
-    this.scale = 2;
+    this.scale = 1;
 
     this.count = 0;
   }
