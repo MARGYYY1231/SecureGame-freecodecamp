@@ -112,11 +112,10 @@ class Player {
   }
 
   calculateRank(arr) {
-    // Sort scores descending
-    arr.sort((a, b) => b - a);
+    if (!arr || arr.length === 0) return `Rank: 1 / 1`;
 
-    // Find this player's score in the sorted list
-    const rank = arr.indexOf(this.score) + 1;
+    // Count how many scores are greater than this player's score
+    const rank = arr.filter(score => score > this.score).length + 1;
 
     return `Rank: ${rank} / ${arr.length}`;
   }
