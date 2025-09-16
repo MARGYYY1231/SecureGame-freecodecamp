@@ -21,14 +21,18 @@ window.addEventListener("keyup", e => keys[e.key.toLowerCase()] = false);
 //     context.fillText("Coin Race", gameWidth/4, 30);
 //     context.fillText("Rank: 1/1", gameWidth/4 * 3, 30);
 
-const collectibles = new Map();
-setMap();
+// -----------------
+// GAME STATE
+// -----------------
 
-function setMap(){
-    collectibles.set(1, 1);
-    collectibles.set(2, 5);
-    collectibles.set(3, 10);
-}
+const players = {};
+const food = [];
+
+const collectibles = new Map([
+  [1, 1],
+  [2, 5],
+  [3, 10],
+]);
 
 function getRandNum(min, max){
     min = Math.ceil(min); // Ensure min is an integer
@@ -41,31 +45,104 @@ function makeCollectible(){
     return new Collectible({x: getRandNum(50, gameWidth * 0.75), y: getRandNum(50, gameHeight * 0.75), value: collectibles.get(id), id: id});
 }
 
-let player = new Player({x: 200, y:200, score: 0, id: 2});
+//let player = new Player({x: 200, y:200, score: 0, id: 2});
 
-let food = [makeCollectible(), makeCollectible(), makeCollectible()];
+// -----------------
+// SOCKET EVENTS
+// -----------------
 
-function loopFood(){
-    for(let i = 0; i<food.length; i++){
-        let c = food[i];
-        if (player.collision(c)) {
-            c = makeCollectible(); 
-            food[i] = c;
-        }
-        c.draw(context);
+let myId = null;
+
+socket.on('connect', () => {
+  myId = socket.id;
+  players[myId] = new Player({
+    x: 200,
+    y: 200,
+    score: 0,
+    id: myId,
+    isLocal: true,   // this one responds to keyboard
+  });
+  console.log("Connected as", myId);
+  socket.emit("newPlayer", players[myId]);
+});
+
+// When a new player joins
+socket.on("newPlayer", (data) => {
+  if (!players[data.id]) {
+    players[data.id] = new Player({ ...data, isLocal: false });
+    console.log("New player joined:", data.id);
+  }
+});
+
+// When players update positions
+socket.on("stateUpdate", (data) => {
+  for (let id in data) {
+    if (id !== myId) {
+      if (!players[id]) {
+        players[id] = new Player({ ...data[id], isLocal: false });
+      } else {
+        // Update remote player
+        players[id].x = data[id].x;
+        players[id].y = data[id].y;
+        players[id].score = data[id].score;
+      }
     }
+  }
+});
+
+// When a player disconnects
+socket.on("playerLeft", (id) => {
+  delete players[id];
+  console.log("Player left:", id);
+});
+
+// -----------------
+// GAME LOOP
+// -----------------
+
+function loopFood() {
+  for (let i = 0; i < food.length; i++) {
+    let c = food[i];
+    // Only my local player checks collisions
+    if (players[myId] && players[myId].collision(c)) {
+      food[i] = makeCollectible();
+      // send updated score
+      socket.emit("scoreUpdate", { id: myId, score: players[myId].score });
+    }
+    food[i].draw(context);
+  }
 }
 
-function animate(){
-    player.update(keys);
-    player.draw(context);
-    loopFood();
+function animate() {
+  // Update + draw all players
+  for (let id in players) {
+    let p = players[id];
+    p.update(keys);   // only moves if isLocal
+    p.draw(context);
+  }
+
+  loopFood();
+
+  // Send my state to server
+  if (players[myId]) {
+    socket.emit("move", {
+      id: myId,
+      x: players[myId].x,
+      y: players[myId].y,
+      score: players[myId].score,
+    });
+  }
 }
 
-function frame(){
-    context.clearRect(0, 0, gameWidth, gameHeight);
-    animate();
-    requestAnimationFrame(frame);
+function frame() {
+  context.clearRect(0, 0, gameWidth, gameHeight);
+  animate();
+  requestAnimationFrame(frame);
+}
+
+// Init some food
+for (let i = 0; i < 3; i++) {
+  food.push(makeCollectible());
 }
 
 frame();

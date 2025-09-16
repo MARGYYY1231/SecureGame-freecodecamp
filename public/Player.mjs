@@ -1,9 +1,10 @@
 class Player {
-  constructor({x, y, score, id}) {
+  constructor({x, y, score, id, isLocal = false}) {
     this.x = x;
     this.y = y;
     this.score = score;
     this.id = id;
+    this.isLocal = isLocal;
     this.speed = 1;
     this.sheet = this.getSheet();
 
@@ -26,6 +27,7 @@ class Player {
   }
 
   update(keys){
+    if (!this.isLocal) return;
     if(keys["w"]){
       console.log("w");
       this.movePlayer("up", this.speed);
