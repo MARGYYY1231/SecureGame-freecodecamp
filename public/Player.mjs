@@ -96,16 +96,19 @@ class Player {
     const playerCenterX = this.x + (this.width * this.scale) / 2;
     const playerCenterY = this.y + (this.height * this.scale) / 2;
 
-    const itemCenterX = item.x + ((item.width || 32) / 2);
-    const itemCenterY = item.y + ((item.height || 32) / 2);
+    const itemWidth = item.width || 32;
+    const itemHeight = item.height || 32;
+
+    const itemCenterX = item.x + itemWidth / 2;
+    const itemCenterY = item.y + itemHeight / 2;
 
     const dx = playerCenterX - itemCenterX;
     const dy = playerCenterY - itemCenterY;
     const distance = Math.sqrt(dx * dx + dy * dy);
 
-    // Use sum of "radii" instead of fixed 16
-    const playerRadius = (this.width * this.scale) / 2;
-    const itemRadius = (item.width || 32) / 2;
+    // Approximate each as a circle with radius = half their size
+    const playerRadius = Math.min(this.width * this.scale, this.height * this.scale) / 2;
+    const itemRadius = Math.min(itemWidth, itemHeight) / 2;
 
     if (distance < playerRadius + itemRadius) {
       this.score += item.value;
