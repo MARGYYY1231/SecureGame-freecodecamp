@@ -6,6 +6,14 @@ code {
   background: #d0d0d5;
 }
 
+p{
+  position: static;
+}
+
+ul{
+  position: static;
+}
+
 canvas {
   margin: auto;
   background-color: black;
