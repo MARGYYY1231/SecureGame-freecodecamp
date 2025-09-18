@@ -6,11 +6,7 @@ code {
   background: #d0d0d5;
 }
 
-p{
-  position: static;
-}
-
-ul{
+#div1{
   position: static;
 }
 
